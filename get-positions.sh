@@ -4,7 +4,7 @@ IFS='
 while true
 do
     d=`date`
-    buses=`curl -s http://m.cip.gatech.edu/api/buses/position | jq --raw-output '.[] | "\(.jobID)\t\(.speed)\t\(.plng)\t\(.plat)\t\(.lng)\t\(.lat)\t\(.color)\t\(.id)"'`
+    buses=`curl -s http://m.cip.gatech.edu/api/buses/position | jq --raw-output '.[] | {jobID, speed, plng, plat, lng, lat, color, id}'`
     for bus in $buses
     do
         echo -e "$d\t$bus"
